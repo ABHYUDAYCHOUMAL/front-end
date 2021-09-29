@@ -3,6 +3,8 @@
 import React from 'react'
 import axios from 'axios'
 import { TextField, Button } from '@material-ui/core'
+import BasicEditingGrid from './Search.jsx'
+
 class App extends React.Component {
 	constructor() {
 		super()
@@ -20,7 +22,7 @@ class App extends React.Component {
 		}
 	}
 	componentDidMount() {
-		axios.get('http://localhost:8000/hospital/view').then((res) => {
+		axios.get('http://localhost:8080/hospital/view').then((res) => {
 			const hospitals = res.data
 			this.setState({ hospitals })
 			console.log(hospitals)
@@ -53,7 +55,7 @@ class App extends React.Component {
 		}
 		console.log(details)
 		axios
-			.post('http://localhost:8000/hospital/store', details)
+			.post('http://localhost:8080/hospital/store', details)
 			.then((res) => {
 				console.log(res)
 				this.componentDidMount()
@@ -66,6 +68,7 @@ class App extends React.Component {
 	render() {
 		return (
 			<div>
+				<BasicEditingGrid />
 				{this.state.hospitals.map((e) => {
 					return (
 						<div className={e.name} key={e._id}>
