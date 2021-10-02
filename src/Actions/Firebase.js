@@ -4,7 +4,7 @@ import { initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const auth = initializeApp({
+const app = initializeApp({
 	apiKey: 'AIzaSyA2CPIpiH7NcDlfLSbS7ITHBtQU2dLT3bU',
 	authDomain: 'raione-iiitr.firebaseapp.com',
 	projectId: 'raione-iiitr',
@@ -14,6 +14,6 @@ const auth = initializeApp({
 	measurementId: 'G-84RNQJCMQZ',
 })
 
-const app = getAuth(auth)
+const Auth = getAuth(app)
 
-export default app
+export default Auth
