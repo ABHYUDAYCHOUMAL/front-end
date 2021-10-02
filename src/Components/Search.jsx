@@ -1,43 +1,39 @@
-import React from "react";
-import axios from "axios";
-import { AllHospitals, SearchHospital } from "../Apis";
-import { SearchCard } from "../Components";
-class Search extends React.Component {
- constructor(props) {
-  super(props);
-  this.state = {
-   search: "",
-   hospitals: [],
-   hospital: "",
-  };
- }
+/** @format */
 
- componentDidMount() {
-  navigator.geolocation.getCurrentPosition(function (position) {
-   console.log(position);
-   axios
-    .get(
-     `${process.env.REACT_APP_API_URL}/hospital/search?lon=${position.coords.longitude}&lat=${position.coords.latitude}&radius=10000000000000000000000000000000000000000000000000000000000000000`
-    )
-    .then((res) => {
-     const hospitals = res.data;
-     console.log(hospitals);
-     this.setState({
-      hospital: hospitals,
-     });
-     console.log(this.state.hospital);
-    });
-  });
-  console.log(this.state.hospitals);
- }
- render() {
-  return (
-   <>
-    <h1>Your nearby hospital</h1>
-    <SearchCard hospitals={this.state.hospitals || this.state.hospital} />
-   </>
-  );
- }
+import React from 'react'
+import axios from 'axios'
+import { AllHospitals, SearchHospital } from '../Apis'
+import { SearchCard } from '../Components'
+class Search extends React.Component {
+	constructor(props) {
+		super(props)
+		this.state = {
+			radius: 10,
+			hospitals: [],
+		}
+	}
+
+	componentDidMount() {
+		navigator.geolocation.getCurrentPosition((position) => {
+			// console.log(position)
+			SearchHospital(position.coords.longitude, position.coords.latitude, this.state.radius)
+				.then((hospitals) => {
+					// console.log(hospitals)
+					this.setState({ hospitals })
+				})
+				.catch((err) => {
+					console.log(err)
+				})
+		})
+	}
+	render() {
+		return (
+			<>
+				<h1>Your nearby hospital</h1>
+				<SearchCard hospitals={this.state.hospitals} />
+			</>
+		)
+	}
 }
 
-export default Search;
+export default Search
