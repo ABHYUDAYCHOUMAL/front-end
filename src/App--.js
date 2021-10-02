@@ -4,7 +4,9 @@ import React from 'react'
 import axios from 'axios'
 import { TextField, Button } from '@material-ui/core'
 import BasicEditingGrid from './Search.jsx'
-
+import Navbar from './Components/Navbar.jsx'
+import LoginForm from './Components/LoginForm'
+import Search from './Components/Search.jsx'
 class App extends React.Component {
 	constructor() {
 		super()
@@ -21,8 +23,9 @@ class App extends React.Component {
 			name: '',
 		}
 	}
+
 	componentDidMount() {
-		axios.get('http://localhost:8080/hospital/view').then((res) => {
+		axios.get(`${process.env.REACT_APP_API_URL}/hospital/view`).then((res) => {
 			const hospitals = res.data
 			this.setState({ hospitals })
 			console.log(hospitals)
@@ -68,7 +71,14 @@ class App extends React.Component {
 	render() {
 		return (
 			<div>
+				<Navbar />
+
+				<LoginForm />
+
 				<BasicEditingGrid />
+
+				<Search/>
+				
 				{this.state.hospitals.map((e) => {
 					return (
 						<div className={e.name} key={e._id}>
