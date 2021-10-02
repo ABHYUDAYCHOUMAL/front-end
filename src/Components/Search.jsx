@@ -8,7 +8,7 @@ class Search extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			radius: 10,
+			radius: 2500,
 			hospitals: [],
 		}
 	}
@@ -18,7 +18,7 @@ class Search extends React.Component {
 			// console.log(position)
 			SearchHospital(position.coords.longitude, position.coords.latitude, this.state.radius)
 				.then((hospitals) => {
-					// console.log(hospitals)
+					console.log(hospitals)
 					this.setState({ hospitals })
 				})
 				.catch((err) => {
