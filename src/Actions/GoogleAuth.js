@@ -1,12 +1,12 @@
 /** @format */
 
 import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
-import { Auth } from './'
+import { Auth } from '.'
 import { AddUser, EditUser, User } from '../Apis'
 
 const provider = new GoogleAuthProvider()
 
-const GoogleLogin = () => {
+const GoogleAuth = () => {
 	signInWithPopup(Auth, provider, (err, result) => {
 		if (err) {
 			console.log(err)
@@ -33,4 +33,4 @@ const GoogleLogin = () => {
 	})
 }
 
-export default GoogleLogin
+export default GoogleAuth
