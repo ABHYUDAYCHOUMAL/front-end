@@ -10,6 +10,7 @@ const DeleteUser = () => {
 			console.log(err)
 		} else {
 			console.log('User deleted')
+			console.log(user)
 		}
 	})
 }

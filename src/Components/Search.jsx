@@ -7,7 +7,7 @@ class Search extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			radius: 2500,
+			radius: 10,
 			hospitals: [],
 		}
 	}

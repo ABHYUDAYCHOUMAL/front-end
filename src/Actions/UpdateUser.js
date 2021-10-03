@@ -3,10 +3,10 @@
 import { updateProfile } from 'firebase/auth'
 import { Auth } from './'
 
-const UpdateUser = (data) => {
+const UpdateUser = (displayName, photoURL) => {
 	updateProfile(Auth.currentUser, {
-		displayName: data.displayName,
-		photoURL: data.photoURL,
+		displayName: displayName,
+		photoURL: photoURL,
 	})
 		.then(() => {
 			// Profile updated!
