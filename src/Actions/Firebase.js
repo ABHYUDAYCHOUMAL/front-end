@@ -5,13 +5,13 @@ import { getAuth } from 'firebase/auth'
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const app = initializeApp({
-	apiKey: 'AIzaSyA2CPIpiH7NcDlfLSbS7ITHBtQU2dLT3bU',
-	authDomain: 'raione-iiitr.firebaseapp.com',
-	projectId: 'raione-iiitr',
-	storageBucket: 'raione-iiitr.appspot.com',
-	messagingSenderId: '1070260637828',
-	appId: '1:1070260637828:web:de142eb16ac4112dbcf2d1',
-	measurementId: 'G-84RNQJCMQZ',
+	apiKey: 'AIzaSyAmHd7jaqq6kh-vBVC-wl_WWNnol5f-KfU',
+	authDomain: 'project-india-2021.firebaseapp.com',
+	projectId: 'project-india-2021',
+	storageBucket: 'project-india-2021.appspot.com',
+	messagingSenderId: '880744710305',
+	appId: '1:880744710305:web:de46ad9daa2afa82ffb0e0',
+	measurementId: 'G-HLCE744S1F',
 })
 
 const Auth = getAuth(app)
