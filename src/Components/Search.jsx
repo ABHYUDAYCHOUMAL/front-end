@@ -1,8 +1,7 @@
 /** @format */
 
 import React from 'react'
-import axios from 'axios'
-import { AllHospitals, SearchHospital } from '../Apis'
+import { SearchHospital } from '../Apis'
 import { SearchCard } from '../Components'
 class Search extends React.Component {
 	constructor(props) {
