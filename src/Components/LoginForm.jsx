@@ -1,32 +1,32 @@
-/** @format */
-
-import React from 'react'
-import { Card, CardActions, CardContent, Button, Typography, TextField } from '@material-ui/core'
+import * as React from "react";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
 
 class LoginForm extends React.Component {
-	render() {
-		return (
-			<>
-				<Card>
-					<CardContent>
-						<Typography color='textSecondary' gutterBottom>
-							Login
-						</Typography>
-						<form>
-							<TextField id='email' label='E-Mail' variant='outlined' />
-							<TextField id='password' label='Password' variant='outlined' />
-							<Button variant='contained' type='submit'>
-								Login
-							</Button>
-						</form>
-						<Button variant='contained' type='submit'>
-							Google SignUp
-						</Button>
-					</CardContent>
-				</Card>
-			</>
-		)
-	}
+ render() {
+  return (
+   <Box
+    component="form"
+    sx={{
+     "& > :not(style)": { m: 1, width: "25ch" },
+    }}
+    noValidate
+    autoComplete="off"
+   >
+    <form>
+     <TextField id="outlined-basic" label="email" variant="outlined" />
+     <TextField id="outlined-basic" label="password" variant="outlined" />
+     <Button variant="contained">Login</Button>
+     <br />
+     <br />
+     <Button variant="contained" color="success">
+      Google Sign
+     </Button>
+    </form>
+   </Box>
+  );
+ }
 }
 
-export default LoginForm
+export default LoginForm;
