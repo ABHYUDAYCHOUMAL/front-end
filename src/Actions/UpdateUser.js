@@ -8,9 +8,11 @@ const UpdateUser = (displayName, photoURL) => {
 		displayName: displayName,
 		photoURL: photoURL,
 	})
-		.then(() => {
+		.then((result) => {
 			// Profile updated!
 			// ...
+			console.log('Profile updated!')
+			console.log(result)
 		})
 		.catch((error) => {
 			// An error occurred

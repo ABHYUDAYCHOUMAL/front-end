@@ -1,16 +1,14 @@
 /** @format */
 
 import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
-import { Auth } from '.'
+import { Auth } from './'
 import { AddUser, EditUser, User } from '../Apis'
 
 const provider = new GoogleAuthProvider()
 
 const GoogleAuth = () => {
-	signInWithPopup(Auth, provider, (err, result) => {
-		if (err) {
-			console.log(err)
-		} else {
+	signInWithPopup(Auth, provider)
+		.then(async (result) => {
 			// This gives you a Google Access Token. You can use it to access the Google API.
 			// const credential = GoogleAuthProvider.credentialFromResult(result)
 			// const token = credential.accessToken
@@ -23,14 +21,26 @@ const GoogleAuth = () => {
 				avatar: photoURL,
 				emailVerified: emailVerified,
 			}
-			if (User(uid)) {
+			console.log(user)
+			if (await User(uid)) {
+				console.log('user exist')
 				EditUser(uid, user)
-				console.log('User already exists')
 			} else {
+				console.log('user not exist')
 				AddUser(user)
 			}
-		}
-	})
+		})
+		.catch((error) => {
+			// Handle Errors here.
+			const errorCode = error.code
+			const errorMessage = error.message
+			// The email of the user's account used.
+			const email = error.email
+			// The firebase.auth.AuthCredential type that was used.
+			const credential = error.credential
+			// ...
+			console.log(errorCode + errorMessage + email + credential)
+		})
 }
 
 export default GoogleAuth

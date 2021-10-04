@@ -5,14 +5,14 @@ import { Auth } from './'
 
 const DeleteUser = () => {
 	const user = Auth.currentUser
-	deleteUser(user, (err) => {
-		if (err) {
-			console.log(err)
-		} else {
+	deleteUser(user)
+		.then((result) => {
 			console.log('User deleted')
-			console.log(user)
-		}
-	})
+			console.log(result)
+		})
+		.catch((error) => {
+			console.log(error)
+		})
 }
 
 export default DeleteUser

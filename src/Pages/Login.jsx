@@ -6,10 +6,14 @@ class Login extends React.Component {
 	render() {
 		return (
 			<>
-				<h2>
-					This Login Page
+				<div
+					style={{
+						display: 'flex',
+						justifyContent: 'center',
+						textAlign: 'center',
+					}}>
 					<LoginForm />
-				</h2>
+				</div>
 			</>
 		)
 	}

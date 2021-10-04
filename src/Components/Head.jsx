@@ -6,9 +6,9 @@ class Head extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			title: props.title,
-			description: props.description,
-			keywords: props.keywords,
+			title: props.title ? props.title : '',
+			description: props.description ? props.description : '',
+			keywords: props.keywords ? props.keywords : '',
 		}
 	}
 
@@ -16,9 +16,6 @@ class Head extends React.Component {
 		return (
 			<>
 				<title>{this.state.title}</title>
-				<meta charSet='utf-8' />
-				<meta name='viewport' content='width=device-width, initial-scale=1' />
-				<meta name='theme-color' content='#000000' />
 				<meta name='description' content={this.state.description} />
 				<meta name='keywords' content={this.state.keywords} />
 			</>

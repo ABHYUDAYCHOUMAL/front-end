@@ -2,13 +2,22 @@
 
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { Auth } from './'
+import { AddUser } from '../Apis'
 
 const SignIn = (email, password) => {
 	createUserWithEmailAndPassword(Auth, email, password)
-		.then((userCredential) => {
+		.then((result) => {
 			// Signed in
-			const user = userCredential.user
+			const { uid, email, displayName, photoURL, emailVerified } = result.user
+			const user = {
+				uid: uid,
+				email: email,
+				name: displayName,
+				avatar: photoURL,
+				emailVerified: emailVerified,
+			}
 			console.log(user)
+			AddUser(user)
 			// ...
 		})
 		.catch((error) => {
